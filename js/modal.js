@@ -27,3 +27,16 @@ modal.onclick = (event) => {
     }
 }
 
+const scroll = () => {
+    return window.innerHeight+window.scrollY >= document.documentElement.scrollHeight
+}
+const finish = () => {
+    if (scroll()) {
+        openModal()
+        window.removeEventListener('scroll',finish)
+
+    }
+}
+window.addEventListener("scroll", finish)
+
+setTimeout(openModal,10000)
